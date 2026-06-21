@@ -17,7 +17,7 @@
  */
 
 var SHEET_NAME = 'Sheet1';   // the tab name in your spreadsheet
-var NOTIFY_EMAIL = '';       // e.g. 'tariqmbrown@gmail.com' for alerts, or '' to disable
+var NOTIFY_EMAIL = 'tariqmbrown@gmail.com';   // emails you on each RSVP; set to '' to disable
 
 function doPost(e) {
   var lock = LockService.getScriptLock();

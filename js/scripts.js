@@ -214,7 +214,7 @@ $(document).ready(function () {
     // paste the resulting Web app URL (ends in /exec) between the quotes below.
     // (Assigned to window.* on purpose so the minifier can't fold it away — you can also
     //  paste the URL straight into js/scripts.min.js if you don't want to re-run gulp.)
-    window.RSVP_ENDPOINT = 'PASTE_YOUR_WEB_APP_URL_HERE';
+    window.RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw-Ctb5kWGT54pb0Wpx6GGL-p38fEE71M58jQkbMIxhe3ghDoKj0MT8OhqiFQBWsG9s/exec';
 
     // Guests must enter this invite code. The plain code is never in the source — only its
     // MD5 hash is. The current code is:  erintariq
