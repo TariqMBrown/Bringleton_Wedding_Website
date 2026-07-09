@@ -19,7 +19,7 @@ It's a static site: HTML + SCSS (compiled with Gulp) + a tiny serverless RSVP ba
 1. Rewrite the "How we met" paragraph (currently a friendly placeholder) — `index.html`, `#intro`.
 2. Stand up the RSVP backend so the form actually saves responses — **step 2 below**.
 3. (Optional) Replace `[YOUR-DOMAIN]` in the `og:image` meta tag once deployed.
-4. Deploy — **step 4 below**.
+4. Deploy — **step 3 below**.
 
 ---
 
@@ -55,7 +55,6 @@ Main spots:
 - `[VENUE NAME]`, `[VENUE ADDRESS]`, `[CONTACT NAME]`, `[PHONE]` — the map section
 - Uber button — replace coords/address or delete the block
 - `[RSVP DEADLINE]`
-- `[YOUR_GOOGLE_MAPS_API_KEY]` — see step 3
 - Google Analytics block is commented out; add `[GA_ID]` and uncomment if you want it
 
 ### `js/scripts.js`
@@ -123,9 +122,9 @@ Guests must enter an invite code so randoms can't spam your sheet. It's already 
 Only its MD5 hash is in the code, never the plain word. To change it: serve the site,
 open the browser **console**, run `MD5('your-new-code')`, and replace the hash in the
 `VALID_INVITE_HASHES` array in `js/scripts.js` (add more entries for multiple codes),
-then `npx gulp`. To drop the code requirement entirely, set
-`VALID_INVITE_HASHES = []`-bypass by deleting the invite-code `if (...) return;` block and
-removing the invite-code `<input>` from `index.html`.
+then `npx gulp`. To drop the code requirement entirely, delete the invite-code
+`if (...) return;` block in `js/scripts.js` and remove the invite-code `<input>`
+from `index.html`.
 
 ### f. Test
 Serve the site, fill the form with code `erintariq`, and submit. You should see the
@@ -136,20 +135,7 @@ If it fails, open the console — a CORS/`/exec` 302 is normal (jQuery follows i
 
 ---
 
-## 3. Google Maps
-
-The venue map needs a **Google Maps JavaScript API key**:
-https://developers.google.com/maps/documentation/javascript/get-api-key
-
-1. Create a key, enable the **Maps JavaScript API**, and (recommended) restrict it to
-   your domain.
-2. Put it in `index.html` where it says `[YOUR_GOOGLE_MAPS_API_KEY]`.
-3. Set the marker coordinates in `js/scripts.js` `initMap()` (`[LAT]`/`[LNG]`). In Google
-   Maps, right-click your venue — the first context-menu item is the `lat, lng` pair.
-
----
-
-## 4. Deploy (GitHub Pages, free)
+## 3. Deploy (GitHub Pages, free)
 
 1. Create a GitHub repo and push this folder.
 2. Repo **Settings → Pages → Build and deployment → Deploy from a branch**, pick your
