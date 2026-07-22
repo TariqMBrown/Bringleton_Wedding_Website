@@ -3,7 +3,7 @@
  *
  * SETUP (one time):
  *  1. Create a Google Sheet (sheets.new). In row 1 add these headers exactly:
- *        timestamp    email    name    extras    invite_code
+ *        timestamp    email    name    invite_code
  *  2. In that sheet: Extensions -> Apps Script. Delete the sample code and paste THIS file.
  *  3. (Optional) set NOTIFY_EMAIL below to get an email on every RSVP.
  *  4. Deploy -> New deployment -> type "Web app".
@@ -36,8 +36,7 @@ function doPost(e) {
     if (NOTIFY_EMAIL) {
       MailApp.sendEmail(NOTIFY_EMAIL, 'New wedding RSVP – ' + (e.parameter.name || ''),
         'Name: ' + (e.parameter.name || '') + '\n' +
-        'Email: ' + (e.parameter.email || '') + '\n' +
-        'Additional guests: ' + (e.parameter.extras || ''));
+        'Email: ' + (e.parameter.email || ''));
     }
 
     return json({ result: 'success', row: row });

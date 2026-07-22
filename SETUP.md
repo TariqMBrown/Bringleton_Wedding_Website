@@ -73,15 +73,15 @@ Main spots:
 
 ## 2. RSVP backend (Google Drive Sheet + Apps Script)
 
-The form POSTs `email`, `name`, `extras`, `invite_code` to a Google Apps Script web app,
+The form POSTs `email`, `name`, `invite_code` to a Google Apps Script web app,
 which appends a row to a Google Sheet in your Drive (and can email you on each RSVP).
 The browser/code side is **already wired up** — you only do the Google-account steps below
 and paste **one URL** back.
 
 ### a. Create the sheet
 1. Go to **https://sheets.new** (signed in as you) and name it e.g. "Wedding RSVPs".
-2. In **row 1**, type these 5 headers, one per cell (exact spelling, lowercase):
-   `timestamp`  `email`  `name`  `extras`  `invite_code`
+2. In **row 1**, type these 4 headers, one per cell (exact spelling, lowercase):
+   `timestamp`  `email`  `name`  `invite_code`
 
 ### b. Add the script
 1. In that sheet: **Extensions → Apps Script**.
