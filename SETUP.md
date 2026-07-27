@@ -11,7 +11,7 @@ It's a static site: HTML + SCSS (compiled with Gulp) + a tiny serverless RSVP ba
 - Date: Sunday, June 27, 2027
 - Events: Ceremony @ Grand Rapids Art Museum (1–2 PM), Reception @ St. Cecilia's (3–8 PM)
 - Dress code: cocktail / semi-formal (placeholder default — edit to taste)
-- Your 6 photos wired into the hero, "How we met", and engagement gallery
+- Your 6 photos wired into the hero, "How we met", and "Photos of the Couple" gallery
 - Venue map: keyless Google Maps embed (no API key needed)
 - Instagram hashtag #ErinAndTariq, add-to-calendar event, RSVP deadline (June 1, 2027)
 
@@ -59,7 +59,7 @@ Main spots:
 
 ### `js/scripts.js`
 - Calendar event details (title / start / end / address) — already set for June 27, 2027
-- `RSVP_ENDPOINT` + invite-code hashes — see step 2
+- `RSVP_ENDPOINT` — see step 2
 - (The venue map is now a keyless `<iframe>` embed in `index.html`, so the old
   `initMap()` lat/lng and the Maps API key are no longer used.)
 
@@ -73,15 +73,15 @@ Main spots:
 
 ## 2. RSVP backend (Google Drive Sheet + Apps Script)
 
-The form POSTs `email`, `name`, `invite_code` to a Google Apps Script web app,
+The form POSTs `email`, `name` to a Google Apps Script web app,
 which appends a row to a Google Sheet in your Drive (and can email you on each RSVP).
 The browser/code side is **already wired up** — you only do the Google-account steps below
 and paste **one URL** back.
 
 ### a. Create the sheet
 1. Go to **https://sheets.new** (signed in as you) and name it e.g. "Wedding RSVPs".
-2. In **row 1**, type these 4 headers, one per cell (exact spelling, lowercase):
-   `timestamp`  `email`  `name`  `invite_code`
+2. In **row 1**, type these 3 headers, one per cell (exact spelling, lowercase):
+   `timestamp`  `email`  `name`
 
 ### b. Add the script
 1. In that sheet: **Extensions → Apps Script**.
@@ -114,19 +114,7 @@ in `js/scripts.min.js` — replacing it there works too.)
 > edit (pencil) → Version: New version → Deploy**, or the `/exec` URL keeps serving the
 > old code.
 
-### e. The invite code
-Guests must enter an invite code so randoms can't spam your sheet. It's already set to:
-
-> **`erintariq`**  (put this on your invitations)
-
-Only its MD5 hash is in the code, never the plain word. To change it: serve the site,
-open the browser **console**, run `MD5('your-new-code')`, and replace the hash in the
-`VALID_INVITE_HASHES` array in `js/scripts.js` (add more entries for multiple codes),
-then `npx gulp`. To drop the code requirement entirely, delete the invite-code
-`if (...) return;` block in `js/scripts.js` and remove the invite-code `<input>`
-from `index.html`.
-
-### f. Test
+### e. Test
 Serve the site, fill the form with code `erintariq`, and submit. You should see the
 "Thank you!" modal and a new row appear in your sheet. Before the URL is connected the
 form shows a friendly "endpoint isn't connected yet" notice instead.

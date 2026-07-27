@@ -3,7 +3,7 @@
  *
  * SETUP (one time):
  *  1. Create a Google Sheet (sheets.new). In row 1 add these headers exactly:
- *        timestamp    email    name    invite_code
+ *        timestamp    email    name
  *  2. In that sheet: Extensions -> Apps Script. Delete the sample code and paste THIS file.
  *  3. (Optional) set NOTIFY_EMAIL below to get an email on every RSVP.
  *  4. Deploy -> New deployment -> type "Web app".

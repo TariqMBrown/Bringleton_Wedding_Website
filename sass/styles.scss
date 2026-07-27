@@ -62,6 +62,17 @@ section .header {
 .section-border {
   border-bottom: 1px solid $keyline-color;
 }
+#invitation {
+  .invitation-date {
+    font-size: 24px;
+    font-weight: $bold;
+  }
+  .date-correction {
+    font-size: 18px;
+    font-weight: $bold;
+    color: #c0392b;
+  }
+}
 .tooltip {
   position: absolute;
   z-index: 1070;
@@ -654,7 +665,7 @@ Instagram
 }
 
 /* ==========================================================================
-Engagement Pics
+Photos of the Couple
 ========================================================================== */
 #eng-pics {
   img {
